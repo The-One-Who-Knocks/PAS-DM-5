@@ -11,7 +11,7 @@ import os, struct
 import numpy as np
 import matplotlib.pyplot as plt
 
-def load_mnist(dataset="training", digits=np.arange(10), path="."):
+def load_mnist(dataset="training", path="."):
     """
     Loads MNIST files into 3D numpy arrays
 
@@ -47,7 +47,7 @@ def load_mnist(dataset="training", digits=np.arange(10), path="."):
     return images, labels
     
 
-images, labels = load_mnist('training', digits=[2])
+images, labels = load_mnist('training')
 
 #Ploting
 n_img = 6300
