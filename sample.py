@@ -3,20 +3,20 @@
 import numpy as np
 import pylab as plt
 
-N = 1000000
-mu = 5.
+# Simulation parameters
+N = 1000000   # Number of sampled points
+mu = 5.       # Distribution's parameter
+Z = mu*(np.exp(-1./mu) - np.exp(-20./mu)) # Partition function
+x = np.linspace(1, 20, num=N, dtype=float) # Domain
 
-
-Z = mu*(np.exp(-1./mu) - np.exp(-20./mu))
-x = np.linspace(1, 20, num=N, dtype=float)
-
-f = np.exp(-x/mu)/Z
+f = np.exp(-x/mu)/Z  # PDF
 
 def sampling_function(a):
+    """ Function which samples points according to the distribution (1)"""
     y = np.random.uniform()    
     return -a*np.log(np.exp(-1./a) - Z/a*y)
 
-sample = np.zeros(N)
+sample = np.zeros(N)  # Set of sampled points
 for i in range(N):
     sample[i] = sampling_function(mu)
 
